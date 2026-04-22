@@ -120,10 +120,19 @@ with st.sidebar:
         max_value=max_date,
         value=[min_date, max_date]
     )
-    st.write("""Capital Bikeshare is a public bicycle-sharing system serving the Washington, D.C. 
+    st.markdown("""
+    <h2 style='text-align:center;'>🚲 Capital Bikeshare</h2>
+    
+    <p style='font-size:16px; text-align:justify;'>
+    Capital Bikeshare is a public bicycle-sharing system serving the Washington, D.C.
     It launched in 2010 and has grown into one of the largest bike-share programs in the United States.
-    The system allows users to rent bikes from automated stations and return them to any other station in the network. 
-    This flexibility makes it a convenient option for short trips, commuting, and last-mile connectivity.""")
+    </p>
+    
+    <p style='font-size:16px; text-align:justify;'>
+    The system allows users to rent bikes from automated stations and return them to any other station in the network.
+    This flexibility makes it a convenient option for short trips, commuting, and last-mile connectivity.
+    </p>
+    """, unsafe_allow_html=True)
 
 main_df = hour_df[(hour_df["dteday"] >= str(start_date)) & 
                 (hour_df["dteday"] <= str(end_date))]
