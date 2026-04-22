@@ -84,9 +84,6 @@ def create_workingday_df(df):
         "casual": "Casual",
         "registered": "Registered"
     }, inplace=True)
-    byworkingday_df = byworkingday_df.melt(id_vars='workingday',
-                                       var_name='user_type',
-                                       value_name='count')
     return byworkingday_df
 
 def create_userhour_df(df):
@@ -332,6 +329,9 @@ with col1:
     st.pyplot(fig)
 
 with col2:
+    byworkingday_df = byworkingday_df.melt(id_vars='workingday',
+                                       var_name='user_type',
+                                       value_name='count')
     fig, ax = plt.subplots(figsize=(10, 5))
     colors="crest"
     sns.barplot(
