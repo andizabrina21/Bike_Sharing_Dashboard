@@ -20,7 +20,7 @@ def create_daily_sharing_df(df):
     return daily_sharing_df
 
 def create_peak_hour_df(df):
-    peak_hour_df = hour_df.groupby("hr")["cnt"].sum().idxmax()
+    peak_hour_df = df.groupby("hr")["cnt"].sum().idxmax()
     return peak_hour_df
 
 def create_total_sharing_bike_df(df):
