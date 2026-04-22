@@ -255,13 +255,13 @@ st.subheader("Environmental Impact")
 col1, col2, col3 = st.columns(3)
 with col1:
     rounded_mean_temp = round(bytemp_df['temp'].mean() * 41, 2)
-    st.metric(label="Avg Temperature", value=f"{rounded_mean_temp}°C")
+    st.metric(label="Temperature", value=f"{rounded_mean_temp}°C")
 with col2:
     rounded_mean_wind = round(bywindspeed_df['windspeed'].mean() * 67, 2)
-    st.metric(label="Avg Windspeed", value=f"{rounded_mean_wind}km/h")
+    st.metric(label="Windspeed", value=f"{rounded_mean_wind}km/h")
 with col3:
     rounded_mean_hum = round(byhum_df['hum'].mean() * 100, 2)
-    st.metric(label="Avg Humidity", value=f"{rounded_mean_hum}%")
+    st.metric(label="Humidity", value=f"{rounded_mean_hum}%")
 with st.expander("see explanation"):
     st.caption('These metrics represent the average temperature, windspeed, and humidity during the bike-sharing usage period.')
 
