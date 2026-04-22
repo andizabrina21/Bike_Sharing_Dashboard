@@ -138,19 +138,6 @@ byweather_df = create_by_weather_df(main_df)
 byworkingday_df = create_workingday_df(main_df)
 byuserhour_df = create_userhour_df(main_df)
 
-with st.sidebar:
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        rounded_mean_temp = round(bytemp_df['temp'].mean() * 41, 2)
-        st.metric(label="Avg Temperature", value=f"{rounded_mean_temp}°C")
-    with col2:
-        rounded_mean_wind = round(bywindspeed_df['windspeed'].mean() * 67, 2)
-        st.metric(label="Avg Windspeed", value=f"{rounded_mean_wind}km/h")
-    with col3:
-        rounded_mean_hum = round(byhum_df['hum'].mean() * 100, 2)
-        st.metric(label="Avg Humidity", value=f"{rounded_mean_hum}%")
-    st.caption('These metrics represent the average temperature, windspeed, and humidity during the bike-sharing usage period.')
-
 #MELENGKAPI DASHBOARD DGN VISUALISASI DATA
 st.header('Bike Sharing Dashboard :bike:')
 
@@ -249,6 +236,19 @@ with col2:
     st.pyplot(fig)
 
 st.subheader("Environmental Impact")
+col1, col2, col3 = st.columns(3)
+with col1:
+    rounded_mean_temp = round(bytemp_df['temp'].mean() * 41, 2)
+    st.metric(label="Avg Temperature", value=f"{rounded_mean_temp}°C")
+with col2:
+    rounded_mean_wind = round(bywindspeed_df['windspeed'].mean() * 67, 2)
+    st.metric(label="Avg Windspeed", value=f"{rounded_mean_wind}km/h")
+with col3:
+    rounded_mean_hum = round(byhum_df['hum'].mean() * 100, 2)
+    st.metric(label="Avg Humidity", value=f"{rounded_mean_hum}%")
+with st.expander("see explanation"):
+    st.caption('These metrics represent the average temperature, windspeed, and humidity during the bike-sharing usage period.')
+
 col1, col2 = st.columns(2)
 with col1:
     fig, ax = plt.subplots(figsize=(10, 5))
