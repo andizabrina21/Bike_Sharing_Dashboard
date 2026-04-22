@@ -20,7 +20,7 @@ def create_daily_sharing_df(df):
     return daily_sharing_df
 
 def create_peak_hour_df(df):
-    peak_hour_df = df.groupby("hr")["cnt"].sum().idxmax()
+    peak_hour_df = df.groupby("hr").cnt.sum().idxmax()
     return peak_hour_df
 
 def create_total_sharing_bike_df(df):
@@ -171,7 +171,7 @@ with col3:
     st.metric("Total Registered", value=total_registered)
 
 with col4:
-    peak_hour = create_peak_hour_df()
+    peak_hour = peak_hour_df()
     st.metric("Peak Hour", value=f"{peak_hour:02d}:00")
 
 with st.expander("see explanation"):
