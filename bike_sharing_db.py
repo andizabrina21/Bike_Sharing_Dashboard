@@ -114,12 +114,14 @@ max_date = hour_df["dteday"].max()
 
 with st.sidebar:
     st.image("https://raw.githubusercontent.com/andizabrina21/bike_sharing_db/main/images/bikepic.jpg", caption="Pic From Google")
-    ':bike:'':bike:'':bike:'':bike:'':bike:'':bike:'':bike:'':bike:'':bike:'':bike:'':bike:'':bike:'':bike:'
-    start_date, end_date = st.date_input(
-        label='Rentang Waktu',min_value=min_date,
-        max_value=max_date,
-        value=[min_date, max_date]
-    )
+    col_left, col_center, col_right = st.columns([1, 2, 1])
+    with col_center:
+        start_date, end_date = st.date_input(
+            label='Rentang Waktu',
+            min_value=min_date,
+            max_value=max_date,
+            value=[min_date, max_date]
+        )
     st.markdown("""
     <h2 style='text-align:center;'>🚲 Capital Bikeshare</h2>
     
