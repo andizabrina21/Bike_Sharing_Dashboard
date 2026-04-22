@@ -234,11 +234,11 @@ with col1:
     ax.tick_params(axis='x', labelsize=20)
     for x, y in zip(byday_df["weekday"], byday_df["count"]):
         ax.text(
-            x, y,
+            x, y+1000,
             f'{y/1000:.1f}K',
             ha='center',
             va='bottom',
-            fontsize=12
+            fontsize=18
         )
     st.pyplot(fig)
 
@@ -261,13 +261,13 @@ with col2:
     ax.set_xticklabels([f"{i:02d}:00" for i in range(24)], rotation=45)
     ax.tick_params(axis='y', labelsize=20)
     ax.tick_params(axis='x', labelsize=20)
-    for x, y in zip(byday_df["hr"], byday_df["count"]):
+    for x, y in zip(byhour_df["hr"], byhour_df["count"]):
         ax.text(
-            x, y,
+            x, y+1000,
             f'{y/1000:.1f}K',
             ha='center',
             va='bottom',
-            fontsize=12
+            fontsize=18
         )
     plt.tight_layout()
     st.pyplot(fig)
