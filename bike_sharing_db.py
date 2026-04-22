@@ -78,9 +78,9 @@ def create_by_weather_df(df):
 def create_workingday_df(df):
     byworkingday_df = df.groupby(by="workingday")[["casual", "registered"]].sum().reset_index()
     byworkingday_df['workingday'] = pd.Categorical(byworkingday_df['workingday'].map({0: 'Weekend/Holiday', 1: 'Working Day'}), ordered=True)
-    byworkingday_df = byworkingday_df(id_vars='workingday',
-                                      var_name='user_type',
-                                      value_name='count')
+    byworkingday_df = byworkingday_df.melt(id_vars='workingday',
+                                       var_name='user_type',
+                                       value_name='count')
     byworkingday_df.rename(columns={
         "casual": "Casual",
         "registered": "Registered"
