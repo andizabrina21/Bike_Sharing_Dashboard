@@ -191,7 +191,7 @@ with st.expander("see explanation"):
     )
 
 st.subheader("User Trends Over Time")
-fig, ax = plt.subplots(figsize=(10, 5))
+fig, ax = plt.subplots(figsize=(8, 4))
 colors = "crest"
 sns.barplot(
     y="count",
