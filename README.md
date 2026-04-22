@@ -18,7 +18,7 @@ Untuk lebih jelasnya dapat dilihat [disini](bike_sharing_analysis.ipynb).
 ## Dashboard
 Untuk melihat hasil visualisasi data dalam bentuk dashboard, ada dua cara sebagai berikut:
 ### Akses dashboard online di Streamlit Cloud
-[Klik di sini untuk melihat dashboard](https://bikesharing-dashboardd.streamlit.app/).
+[Klik di sini untuk melihat dashboard](https://bikesharingdashboard-kmrvb3enktryxype49mf6p.streamlit.app/).
 
 ### Run di Lokal
 1. Clone repository
