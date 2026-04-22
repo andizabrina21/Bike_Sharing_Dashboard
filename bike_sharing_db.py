@@ -171,7 +171,7 @@ with col3:
     st.metric("Total Registered", value=total_registered)
 
 with col4:
-    st.metric("Peak Hour", value=f"{peak_hour:02d}:00")
+    st.metric("Peak Hour", value=f"{peak_hour_df:02d}:00")
 
 with st.expander("see explanation"):
     st.write(
