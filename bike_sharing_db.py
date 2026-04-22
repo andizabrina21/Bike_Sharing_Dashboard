@@ -307,8 +307,7 @@ with col1:
         autopct='%1.1f%%',
         colors=colors,
         startangle=90,
-        explode=(0.05, 0),
-        ax=ax
+        explode=(0.05, 0)
     )
     ax.set_title('User Type Distribution')
     ax.axis('equal')
