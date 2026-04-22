@@ -114,8 +114,14 @@ max_date = hour_df["dteday"].max()
 
 with st.sidebar:
     st.image("https://raw.githubusercontent.com/andizabrina21/bike_sharing_db/main/images/bikepic.jpg", caption="Pic From Google")
-    year = st.selectbox("Tahun", [2011, 2012])
-    month = st.selectbox("Bulan", list(range(1, 13)))
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+
+    start_date, end_date = st.date_input(
+        "Rentang Waktu",
+        value=(min_date, max_date),
+        min_value=min_date,
+        max_value=max_date
+    )
     
     st.markdown("""
     <h2 style='text-align:center;'>🚲 Capital Bikeshare</h2>
