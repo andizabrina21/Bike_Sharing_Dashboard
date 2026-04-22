@@ -96,7 +96,7 @@ def create_bytemp_df(df):
     return bytemp_df
 
 def create_byhum_df(df):
-    byhum_df = df.groupby(by='dtedat').agg({"hum":"mean"})
+    byhum_df = df.groupby(by='dteday').agg({"hum":"mean"})
     return byhum_df
 
 def create_bywindspeed_df(df):
