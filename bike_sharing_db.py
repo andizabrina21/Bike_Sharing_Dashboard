@@ -202,7 +202,8 @@ sns.barplot(
     order=byyear_df.sort_values(by="count", ascending=False).yr,
     palette=colors
 )
-ax.bar_label(ax.containers[0], fmt='%.1fK')
+ax.bar_label(ax.containers[0], fmt='%.2fK')
+ax.bar_label(ax.containers[1], fmt='%.2fK')
 ax.set_title("Annual User Trends")
 ax.set_xlabel("Year")
 ax.set_ylabel("Number of Users")
