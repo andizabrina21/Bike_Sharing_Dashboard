@@ -203,8 +203,8 @@ sns.barplot(
     palette=colors
 )
 for container in ax.containers:
-    labels = [f'{v/1000:.1f}K' for v in container.datavalues]
-    ax.bar_label(container, labels=labels, padding=3)
+    labels = [f'{v/1000:.2f}K' for v in container.datavalues]
+    ax.bar_label(container, labels=labels, padding=5)
 ax.set_title("Annual User Trends")
 ax.set_xlabel("Year")
 ax.set_ylabel("Number of Users")
@@ -225,6 +225,9 @@ with col1:
         linewidth=5,
         color="#36802D",
     )
+    for container in ax.containers:
+        labels = [f'{v/1000:.2f}K' for v in container.datavalues]
+        ax.bar_label(container, labels=labels, padding=5)
     ax.set_title("Daily User Trends")#, loc="center", fontsize=25)
     ax.set_xlabel("Day")
     ax.set_ylabel("Number of Users")
