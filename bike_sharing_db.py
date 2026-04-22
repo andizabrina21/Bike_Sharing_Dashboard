@@ -225,9 +225,6 @@ with col1:
         linewidth=5,
         color="#36802D",
     )
-    for container in ax.containers:
-        labels = [f'{v/1000:.2f}K' for v in container.datavalues]
-        ax.bar_label(container, labels=labels, padding=5)
     ax.set_title("Daily User Trends")#, loc="center", fontsize=25)
     ax.set_xlabel("Day")
     ax.set_ylabel("Number of Users")
@@ -235,6 +232,14 @@ with col1:
     ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
     ax.tick_params(axis='y', labelsize=20)
     ax.tick_params(axis='x', labelsize=20)
+    for x, y in zip(byday_df["weekday"], byday_df["count"]):
+        ax.text(
+            x, y,
+            f'{y/1000:.1f}K',
+            ha='center',
+            va='bottom',
+            fontsize=12
+        )
     st.pyplot(fig)
 
 with col2:
@@ -256,6 +261,14 @@ with col2:
     ax.set_xticklabels([f"{i:02d}:00" for i in range(24)], rotation=45)
     ax.tick_params(axis='y', labelsize=20)
     ax.tick_params(axis='x', labelsize=20)
+    for x, y in zip(byday_df["hr"], byday_df["count"]):
+        ax.text(
+            x, y,
+            f'{y/1000:.1f}K',
+            ha='center',
+            va='bottom',
+            fontsize=12
+        )
     plt.tight_layout()
     st.pyplot(fig)
 
