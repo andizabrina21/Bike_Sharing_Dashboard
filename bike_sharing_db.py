@@ -234,7 +234,7 @@ with col1:
     ax.tick_params(axis='x', labelsize=20)
     for x, y in zip(byday_df["weekday"], byday_df["count"]):
         ax.text(
-            x, y+1000,
+            x, y+800,
             f'{y/1000:.1f}K',
             ha='center',
             va='bottom',
@@ -267,7 +267,7 @@ with col2:
             f'{y/1000:.1f}K',
             ha='center',
             va='bottom',
-            fontsize=18
+            fontsize=15
         )
     plt.tight_layout()
     st.pyplot(fig)
@@ -298,6 +298,9 @@ with col1:
         palette=colors,
         ax=ax
     )
+    for container in ax.containers:
+        labels = [f'{v/1000:.2f}K' for v in container.datavalues]
+        ax.bar_label(container, labels=labels, padding=5)
     ax.set_title("Impact of Season on User Activity")
     ax.set_xlabel("Season")
     ax.set_ylabel("Number of Users")
@@ -317,6 +320,9 @@ with col2:
         palette=colors,
         ax=ax
     )
+    for container in ax.containers:
+        labels = [f'{v/1000:.2f}K' for v in container.datavalues]
+        ax.bar_label(container, labels=labels, padding=5)
     ax.set_title("Impact of Weather on User Activity")
     ax.set_xlabel("Weather")
     ax.set_ylabel("Number of Users")
@@ -361,6 +367,9 @@ with col2:
         palette=colors,
         ax=ax
     )
+    for container in ax.containers:
+        labels = [f'{v/1000:.2f}K' for v in container.datavalues]
+        ax.bar_label(container, labels=labels, padding=5)
     ax.set_title("User Type Behaviour by Day Type")
     ax.set_xlabel("Day Type")
     ax.set_ylabel("Number of Users")
