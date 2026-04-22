@@ -234,7 +234,7 @@ with col1:
     ax.tick_params(axis='x', labelsize=20)
     for x, y in zip(byday_df["weekday"], byday_df["count"]):
         ax.text(
-            x, y+800,
+            x, y+300,
             f'{y/1000:.1f}K',
             ha='center',
             va='bottom',
