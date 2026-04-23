@@ -55,6 +55,21 @@ def create_byyear_df(df):
 
     return byyear_df
 
+def create_bymnth_df(df):
+    bymnth_df = hour_df.groupby(by="mnth").cnt.sum().reset_index()
+    bymnth_df.rename(columns={
+        "cnt": "count",
+    }, inplace=True)
+    
+    bymnth_df['mnth'] = pd.Categorical(byday_df['mnth'].map({
+        1: 'January', 2: 'February', 
+        3: 'March', 4: 'April', 
+        5: 'May', 6: 'June', 
+        7: 'July', 8: 'August',
+        9: 'September', 10: 'October',
+        11: 'November', 12:'December'}), ordered=True)
+    return bymnth_df
+
 def create_by_season_df(df):
     byseason_df = df.groupby(by="season").cnt.sum().reset_index()
     byseason_df.rename(columns={
@@ -151,6 +166,7 @@ total_sharing_bike_df = create_total_sharing_bike_df(main_df)
 byday_df = create_byday_df(main_df)
 byhour_df = create_byhour_df(main_df)
 byyear_df = create_byyear_df(main_df)
+bymnth_df = create_bymnth_df(main_df)
 byseason_df = create_by_season_df(main_df)
 byweather_df = create_by_weather_df(main_df)
 byworkingday_df = create_workingday_df(main_df)
@@ -193,25 +209,54 @@ with st.expander("see explanation"):
     )
 
 st.subheader("User Trends Over Time")
-fig, ax = plt.subplots(figsize=(8, 4))
-colors = "crest"
-sns.barplot(
-    y="count",
-    x="yr",
-    data=byyear_df,
-    order=byyear_df.sort_values(by="count", ascending=False).yr,
-    palette=colors
-)
-for container in ax.containers:
-    labels = [f'{v/1000:.2f}K' for v in container.datavalues]
-    ax.bar_label(container, labels=labels, padding=5)
-ax.set_title("Annual User Trends")
-ax.set_xlabel("Year")
-ax.set_ylabel("Number of Users")
-ax = plt.gca()
-ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
-ax.tick_params(labelsize=12)
-st.pyplot(fig)
+col1, col2 = st.columns(2)
+with col1:
+    fig, ax = plt.subplots(figsize=(8, 4))
+    colors = "crest"
+    sns.barplot(
+        y="count",
+        x="yr",
+        data=byyear_df,
+        order=byyear_df.sort_values(by="count", ascending=False).yr,
+        palette=colors
+    )
+    for container in ax.containers:
+        labels = [f'{v/1000:.2f}K' for v in container.datavalues]
+        ax.bar_label(container, labels=labels, padding=5)
+    ax.set_title("Annual User Trends")
+    ax.set_xlabel("Year")
+    ax.set_ylabel("Number of Users")
+    ax = plt.gca()
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
+    ax.tick_params(labelsize=12)
+    st.pyplot(fig)
+with col2:
+    fig, ax = plt.subplots(figsize=(20, 10))
+    ax.plot(
+        bymnth_df["mnth"],
+        bymnth_df["count"],
+        marker='o',
+        markersize=10,
+        linewidth=5,
+        color="#36802D",
+    )
+    ax.set_title("Monthly User Trends")#, loc="center", fontsize=25)
+    ax.set_xlabel("Month")
+    ax.set_ylabel("Number of Users")
+    ax = plt.gca()
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
+    ax.tick_params(axis='y', labelsize=20)
+    ax.tick_params(axis='x', labelsize=20, rotation=45)
+    for x, y in zip(byday_df["mnth"], byday_df["count"]):
+        ax.text(
+            x, y+300,
+            f'{y/1000:.1f}K',
+            ha='center',
+            va='bottom',
+            fontsize=18
+        )
+    st.pyplot(fig)
+    
 
 fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(24, 6))
 col1, col2 = st.columns(2)
