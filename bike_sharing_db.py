@@ -431,8 +431,7 @@ sns.lineplot(
     y="registered",
     color="C22100",
     label="Registered",
-    linewidth=2,
-    ax=ax
+    linewidth=2
 )
 ax.set_title("User Type Behaviour by Hour")
 ax.set_xlabel("Hour")
