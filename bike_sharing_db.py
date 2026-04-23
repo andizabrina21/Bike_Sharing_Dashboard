@@ -33,7 +33,11 @@ def create_byday_df(df):
     byday_df.rename(columns={
         "cnt": "count",
     }, inplace=True)
-    byday_df['weekday'] = pd.Categorical(byday_df['weekday'].map({0: 'Minggu',1: 'Senin', 2: 'Selasa', 3: 'Rabu', 4: 'Kamis', 5: 'Jumat', 6: 'Sabtu'}), ordered=True)
+    byday_df['weekday'] = pd.Categorical(byday_df['weekday'].map({
+        0: 'Sunday',1: 'Monday', 
+        2: 'Tuesday', 3: 'Wednesday', 
+        4: 'Thursday', 5: 'Friday', 
+        6: 'Sunday'}), ordered=True)
 
     return byday_df
 
@@ -76,7 +80,11 @@ def create_by_season_df(df):
         "cnt": "count"
     }, inplace=True)
 
-    byseason_df['season'] = pd.Categorical(byseason_df['season'].map({1: 'Musim Semi',2: 'Musim Panas', 3: 'Musim Gugur', 4: 'Musim Dingin'}), ordered=True)
+    byseason_df['season'] = pd.Categorical(byseason_df['season'].map({
+        1: 'Autumn',
+        2: 'Summer', 
+        3: 'Fall', 
+        4: 'Winter'}), ordered=True)
 
     return byseason_df
 
@@ -86,7 +94,11 @@ def create_by_weather_df(df):
         "cnt": "count"
     }, inplace=True)
 
-    byweather_df['weathersit'] = pd.Categorical(byweather_df['weathersit'].map({1: 'Cerah',2: 'Kabut', 3: 'Salju Ringan', 4: 'Hujan Lebat'}), ordered=True)
+    byweather_df['weathersit'] = pd.Categorical(byweather_df['weathersit'].map({
+        1: 'Clear',
+        2: 'Mist', 
+        3: 'Light Snow', 
+        4: 'Heavy Rain'}), ordered=True)
 
     return byweather_df
 
