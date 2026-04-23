@@ -222,7 +222,7 @@ with col1:
     )
     for container in ax.containers:
         labels = [f'{v/1000:.2f}K' for v in container.datavalues]
-        ax.bar_label(container, labels=labels, padding=5)
+        ax.bar_label(container, labels=labels, padding=8)
     ax.set_title("Annual User Trends")
     ax.set_xlabel("Year")
     ax.set_ylabel("Number of Users")
