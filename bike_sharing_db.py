@@ -347,10 +347,10 @@ with col1:
         labels = [f'{v/1000:.2f}K' for v in container.datavalues]
         ax.bar_label(container, labels=labels, padding=5)
     ax.set_title("Impact of Season on User Activity")
-    ax.set_xlabel("Season")
-    ax.set_ylabel("Number of Users")
+    ax.set_ylabel("Season")
+    ax.set_xlabel("Number of Users")
     ax = plt.gca()
-    ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
     ax.tick_params(labelsize=12)
     st.pyplot(fig)
 
@@ -369,10 +369,10 @@ with col2:
         labels = [f'{v/1000:.2f}K' for v in container.datavalues]
         ax.bar_label(container, labels=labels, padding=5)
     ax.set_title("Impact of Weather on User Activity")
-    ax.set_xlabel("Weather")
-    ax.set_ylabel("Number of Users")
+    ax.set_ylabel("Weather")
+    ax.set_xlabel("Number of Users")
     ax = plt.gca()
-    ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
     ax.tick_params(labelsize=12)
     st.pyplot(fig)
 
