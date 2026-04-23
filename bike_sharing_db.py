@@ -241,14 +241,14 @@ with col2:
         palette=colors
     )
     for container in ax.containers:
-    labels = [f'{v/1000:.2f}K' for v in container.datavalues]
-    ax.bar_label(
-        container,
-        labels=labels,
-        padding=5,
-        fontsize=8,
-        rotation=45
-    )
+        labels = [f'{v/1000:.2f}K' for v in container.datavalues]
+        ax.bar_label(
+            container,
+            labels=labels,
+            padding=5,
+            fontsize=8,
+            rotation=45
+        )
     ax.set_title("Monthly User Trends")
     ax.set_xlabel("Month")
     ax.set_ylabel("Number of Users")
