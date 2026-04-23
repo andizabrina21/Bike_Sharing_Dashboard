@@ -365,7 +365,9 @@ with col2:
         palette=colors,
         ax=ax
     )
-    ax.invert_xaxis() 
+    ax.invert_xaxis()
+    ax.yaxis.tick_right()
+    ax.yaxis.set_label_position("right")
     for container in ax.containers:
         labels = [f'{v/1000:.2f}K' for v in container.datavalues]
         ax.bar_label(container, labels=labels, padding=5)
