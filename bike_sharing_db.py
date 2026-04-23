@@ -402,8 +402,7 @@ with col2:
         x="workingday",
         hue="user_type",
         data = byworkingday_df,
-        palette=colors,
-        ax=ax
+        palette=colors
     )
     for container in ax.containers:
         labels = [f'{v/1000:.2f}K' for v in container.datavalues]
@@ -421,17 +420,16 @@ sns.lineplot(
     data=byuserhour_df,
     x="hr",
     y="casual",
-    color="C22100",
+    color="8A1F08",
     label="Casual",
-    linewidth=2,
-    ax=ax
+    linewidth=2
 )
 
 sns.lineplot(
     data=byuserhour_df,
     x="hr",
     y="registered",
-    color="8A1F08",
+    color="C22100",
     label="Registered",
     linewidth=2,
     ax=ax
