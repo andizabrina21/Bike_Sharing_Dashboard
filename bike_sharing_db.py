@@ -246,14 +246,15 @@ with col2:
             container,
             labels=labels,
             label_type='center',
-            fontsize=8
+            fontsize=8,
+            rotation=30
         )
     ax.set_title("Monthly User Trends")
     ax.set_xlabel("Month")
     ax.set_ylabel("Number of Users")
     ax = plt.gca()
     ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
-    ax.tick_params(labelsize=12)
+    ax.tick_params(labelsize=12, rotation=45)
     st.pyplot(fig)
 
 fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(24, 6))
