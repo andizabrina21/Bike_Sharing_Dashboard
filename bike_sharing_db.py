@@ -241,8 +241,14 @@ with col2:
         palette=colors
     )
     for container in ax.containers:
-        labels = [f'{v/1000:.2f}K' for v in container.datavalues]
-        ax.bar_label(container, labels=labels, padding=5)
+    labels = [f'{v/1000:.2f}K' for v in container.datavalues]
+    ax.bar_label(
+        container,
+        labels=labels,
+        padding=5,
+        fontsize=8,
+        rotation=45
+    )
     ax.set_title("Monthly User Trends")
     ax.set_xlabel("Month")
     ax.set_ylabel("Number of Users")
@@ -446,31 +452,36 @@ def format_k(value):
         return f'{value/1000:.0f}K'
     else:
         return f'{value:.0f}'
-# Casual
+# Casual (di bawah garis)
 ax.annotate(format_k(casual_max["casual"]),
             (casual_max["hr"], casual_max["casual"]),
             textcoords="offset points",
-            xytext=(0,10),
-            ha='center')
+            xytext=(0,-15),
+            ha='center',
+            va='top')
 
 ax.annotate(format_k(casual_min["casual"]),
             (casual_min["hr"], casual_min["casual"]),
             textcoords="offset points",
             xytext=(0,-15),
-            ha='center')
+            ha='center',
+            va='top')
 
-# Registered
+
+# Registered (di atas garis)
 ax.annotate(format_k(registered_max["registered"]),
             (registered_max["hr"], registered_max["registered"]),
             textcoords="offset points",
             xytext=(0,10),
-            ha='center')
+            ha='center',
+            va='bottom')
 
 ax.annotate(format_k(registered_min["registered"]),
             (registered_min["hr"], registered_min["registered"]),
             textcoords="offset points",
-            xytext=(0,-15),
-            ha='center')
+            xytext=(0,10),
+            ha='center',
+            va='bottom')
 ax.scatter(casual_max["hr"], casual_max["casual"], color="#DE4968")
 ax.scatter(casual_min["hr"], casual_min["casual"], color="#DE4968")
 
