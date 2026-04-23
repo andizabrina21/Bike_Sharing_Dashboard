@@ -106,7 +106,13 @@ def create_workingday_df(df):
 
 def create_userhour_df(df):
     byuserhour_df = df.groupby("hr")[["casual", "registered"]].sum().reset_index()
-    return byuserhour_df
+    stats = {
+        "casual_max": byuserhour_df.loc[byuserhour_df["casual"].idxmax()],
+        "casual_min": byuserhour_df.loc[byuserhour_df["casual"].idxmin()],
+        "registered_max": byuserhour_df.loc[byuserhour_df["registered"].idxmax()],
+        "registered_min": byuserhour_df.loc[byuserhour_df["registered"].idxmin()],
+    }
+    return byuserhour_df, stats
 
 def create_bytemp_df(df):
     bytemp_df = df.groupby(by="dteday").agg({"temp":"mean"})
@@ -170,7 +176,7 @@ bymnth_df = create_bymnth_df(main_df)
 byseason_df = create_by_season_df(main_df)
 byweather_df = create_by_weather_df(main_df)
 byworkingday_df = create_workingday_df(main_df)
-byuserhour_df = create_userhour_df(main_df)
+byuserhour_df, stats = create_userhour_df(main_df)
 
 #MELENGKAPI DASHBOARD DGN VISUALISASI DATA
 st.header('Bike Sharing Dashboard :bike:')
@@ -438,6 +444,8 @@ ax.set_xlabel("Hour")
 ax.set_ylabel("Number of Users")
 ax = plt.gca()
 ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
+ax.annotate(f'{stats["casual_max"]["casual"]:.0f}',
+            (stats["casual_max"]["hr"], stats["casual_max"]["casual"]))
 ax.legend(title='User Type')
 ax.tick_params(labelsize=12)
 st.pyplot(fig)
