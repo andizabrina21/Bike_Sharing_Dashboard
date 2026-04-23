@@ -385,7 +385,7 @@ with col1:
         f"Registered\n({registered_total/1000:.1f}K)"
     ]
     sizes = [casual_total, registered_total]
-    colors = sns.color_palette("rocket")
+    colors = '#DE4968', '#8C2981'
 
     ax.pie(
         sizes,
