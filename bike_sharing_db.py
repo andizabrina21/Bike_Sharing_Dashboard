@@ -261,7 +261,7 @@ with col1:
         marker='o',
         markersize=10,
         linewidth=5,
-        color="#C22100",
+        color="#8C2981",
     )
     ax.set_title("Daily User Trends")#, loc="center", fontsize=25)
     ax.set_xlabel("Day")
@@ -288,7 +288,7 @@ with col2:
         marker='o',
         markersize=10,
         linewidth=5,
-        color="#C22100",
+        color="#DE4968",
     )
     ax.set_title("Hourly User Trends")
     ax.set_xlabel("Hour")
@@ -420,7 +420,7 @@ sns.lineplot(
     data=byuserhour_df,
     x="hr",
     y="casual",
-    color="#8A1F08",
+    color="#DE4968",
     label="Casual",
     linewidth=2
 )
@@ -429,7 +429,7 @@ sns.lineplot(
     data=byuserhour_df,
     x="hr",
     y="registered",
-    color="#C22100",
+    color="#8C2981",
     label="Registered",
     linewidth=2
 )
