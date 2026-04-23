@@ -231,32 +231,25 @@ with col1:
     ax.tick_params(labelsize=12)
     st.pyplot(fig)
 with col2:
-    fig, ax = plt.subplots(figsize=(20, 10))
-    ax.plot(
-        bymnth_df["mnth"],
-        bymnth_df["count"],
-        marker='o',
-        markersize=10,
-        linewidth=5,
-        color="#36802D",
+    fig, ax = plt.subplots(figsize=(8, 4))
+    colors = "crest"
+    sns.barplot(
+        y="count",
+        x="mnth",
+        data=bymnth_df,
+        order=bymnth_df.sort_values(by="count", ascending=False).mnth,
+        palette=colors
     )
-    ax.set_title("Monthly User Trends")#, loc="center", fontsize=25)
+    for container in ax.containers:
+        labels = [f'{v/1000:.2f}K' for v in container.datavalues]
+        ax.bar_label(container, labels=labels, padding=5)
+    ax.set_title("Monthly User Trends")
     ax.set_xlabel("Month")
     ax.set_ylabel("Number of Users")
     ax = plt.gca()
     ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
-    ax.tick_params(axis='y', labelsize=20)
-    ax.tick_params(axis='x', labelsize=20, rotation=45)
-    for x, y in zip(bymnth_df["mnth"], bymnth_df["count"]):
-        ax.text(
-            x, y+300,
-            f'{y/1000:.1f}K',
-            ha='center',
-            va='bottom',
-            fontsize=18
-        )
+    ax.tick_params(labelsize=12)
     st.pyplot(fig)
-    
 
 fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(24, 6))
 col1, col2 = st.columns(2)
