@@ -61,7 +61,7 @@ def create_bymnth_df(df):
         "cnt": "count",
     }, inplace=True)
     
-    bymnth_df['mnth'] = pd.Categorical(byday_df['mnth'].map({
+    bymnth_df['mnth'] = pd.Categorical(bymnth_df['mnth'].map({
         1: 'January', 2: 'February', 
         3: 'March', 4: 'April', 
         5: 'May', 6: 'June', 
