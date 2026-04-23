@@ -247,7 +247,7 @@ with col2:
     ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
     ax.tick_params(axis='y', labelsize=20)
     ax.tick_params(axis='x', labelsize=20, rotation=45)
-    for x, y in zip(byday_df["mnth"], bymnth_df["count"]):
+    for x, y in zip(bymnth_df["mnth"], bymnth_df["count"]):
         ax.text(
             x, y+300,
             f'{y/1000:.1f}K',
