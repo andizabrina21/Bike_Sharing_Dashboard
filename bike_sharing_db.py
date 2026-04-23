@@ -336,8 +336,8 @@ with col1:
     fig, ax = plt.subplots(figsize=(10, 5))
     colors="rocket"
     sns.barplot(
-        y="count",
-        x="season",
+        x="count",
+        y="season",
         data = byseason_df,
         order = byseason_df.sort_values(by="count", ascending=False).season,
         palette=colors,
@@ -358,8 +358,8 @@ with col2:
     fig, ax = plt.subplots(figsize=(10, 5))
     colors="rocket"
     sns.barplot(
-        y="count",
-        x="weathersit",
+        x="count",
+        y="weathersit",
         data = byweather_df, 
         order = byweather_df.sort_values(by="count", ascending=False).weathersit,
         palette=colors,
