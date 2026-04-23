@@ -106,13 +106,7 @@ def create_workingday_df(df):
 
 def create_userhour_df(df):
     byuserhour_df = df.groupby("hr")[["casual", "registered"]].sum().reset_index()
-    stats = {
-        "casual_max": byuserhour_df.loc[byuserhour_df["casual"].idxmax()],
-        "casual_min": byuserhour_df.loc[byuserhour_df["casual"].idxmin()],
-        "registered_max": byuserhour_df.loc[byuserhour_df["registered"].idxmax()],
-        "registered_min": byuserhour_df.loc[byuserhour_df["registered"].idxmin()],
-    }
-    return byuserhour_df, stats
+    return byuserhour_df
 
 def create_bytemp_df(df):
     bytemp_df = df.groupby(by="dteday").agg({"temp":"mean"})
@@ -176,7 +170,7 @@ bymnth_df = create_bymnth_df(main_df)
 byseason_df = create_by_season_df(main_df)
 byweather_df = create_by_weather_df(main_df)
 byworkingday_df = create_workingday_df(main_df)
-byuserhour_df, stats = create_userhour_df(main_df)
+byuserhour_df = create_userhour_df(main_df)
 
 #MELENGKAPI DASHBOARD DGN VISUALISASI DATA
 st.header('Bike Sharing Dashboard :bike:')
@@ -422,6 +416,11 @@ with col2:
     st.pyplot(fig)
 
 fig, ax = plt.subplots(figsize=(10, 5))
+casual_max = byuserhour_df.loc[byuserhour_df["casual"].idxmax()]
+casual_min = byuserhour_df.loc[byuserhour_df["casual"].idxmin()]
+
+registered_max = byuserhour_df.loc[byuserhour_df["registered"].idxmax()]
+registered_min = byuserhour_df.loc[byuserhour_df["registered"].idxmin()]
 sns.lineplot(
     data=byuserhour_df,
     x="hr",
@@ -442,10 +441,38 @@ sns.lineplot(
 ax.set_title("User Type Behaviour by Hour")
 ax.set_xlabel("Hour")
 ax.set_ylabel("Number of Users")
+# Casual
+ax.annotate(f'{casual_max["casual"]:.0f}',
+            (casual_max["hr"], casual_max["casual"]),
+            textcoords="offset points",
+            xytext=(0,10),
+            ha='center')
+
+ax.annotate(f'{casual_min["casual"]:.0f}',
+            (casual_min["hr"], casual_min["casual"]),
+            textcoords="offset points",
+            xytext=(0,-15),
+            ha='center')
+
+# Registered
+ax.annotate(f'{registered_max["registered"]:.0f}',
+            (registered_max["hr"], registered_max["registered"]),
+            textcoords="offset points",
+            xytext=(0,10),
+            ha='center')
+
+ax.annotate(f'{registered_min["registered"]:.0f}',
+            (registered_min["hr"], registered_min["registered"]),
+            textcoords="offset points",
+            xytext=(0,-15),
+            ha='center')
+ax.scatter(casual_max["hr"], casual_max["casual"], color="#DE4968")
+ax.scatter(casual_min["hr"], casual_min["casual"], color="#DE4968")
+
+ax.scatter(registered_max["hr"], registered_max["registered"], color="#8C2981")
+ax.scatter(registered_min["hr"], registered_min["registered"], color="#8C2981")
 ax = plt.gca()
 ax.yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))
-ax.annotate(f'{stats["casual_max"]["casual"]:.0f}',
-            (stats["casual_max"]["hr"], stats["casual_max"]["casual"]))
 ax.legend(title='User Type')
 ax.tick_params(labelsize=12)
 st.pyplot(fig)
