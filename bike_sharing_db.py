@@ -232,7 +232,7 @@ with col1:
     st.pyplot(fig)
 with col2:
     fig, ax = plt.subplots(figsize=(8, 4))
-    colors = rocket"
+    colors = "rocket"
     sns.barplot(
         y="count",
         x="mnth",
