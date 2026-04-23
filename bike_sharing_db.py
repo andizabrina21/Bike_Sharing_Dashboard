@@ -212,7 +212,7 @@ st.subheader("User Trends Over Time")
 col1, col2 = st.columns(2)
 with col1:
     fig, ax = plt.subplots(figsize=(8, 4))
-    colors = "crest"
+    colors = "rocket"
     sns.barplot(
         y="count",
         x="yr",
@@ -232,7 +232,7 @@ with col1:
     st.pyplot(fig)
 with col2:
     fig, ax = plt.subplots(figsize=(8, 4))
-    colors = "crest"
+    colors = rocket"
     sns.barplot(
         y="count",
         x="mnth",
@@ -261,7 +261,7 @@ with col1:
         marker='o',
         markersize=10,
         linewidth=5,
-        color="#36802D",
+        color="C22100",
     )
     ax.set_title("Daily User Trends")#, loc="center", fontsize=25)
     ax.set_xlabel("Day")
@@ -288,7 +288,7 @@ with col2:
         marker='o',
         markersize=10,
         linewidth=5,
-        color="#36802D",
+        color="C22100",
     )
     ax.set_title("Hourly User Trends")
     ax.set_xlabel("Hour")
@@ -327,7 +327,7 @@ with st.expander("see explanation"):
 col1, col2 = st.columns(2)
 with col1:
     fig, ax = plt.subplots(figsize=(10, 5))
-    colors="crest"
+    colors="rocket"
     sns.barplot(
         y="count",
         x="season",
@@ -349,7 +349,7 @@ with col1:
 
 with col2:
     fig, ax = plt.subplots(figsize=(10, 5))
-    colors="crest"
+    colors="rocket"
     sns.barplot(
         y="count",
         x="weathersit",
@@ -380,7 +380,7 @@ with col1:
         f"Registered\n({registered_total/1000:.1f}K)"
     ]
     sizes = [casual_total, registered_total]
-    colors = sns.color_palette("crest")
+    colors = sns.color_palette("rocket")
 
     ax.pie(
         sizes,
@@ -396,7 +396,7 @@ with col1:
 
 with col2:
     fig, ax = plt.subplots(figsize=(10, 5))
-    colors="crest"
+    colors="rocket"
     sns.barplot(
         y="count",
         x="workingday",
@@ -421,7 +421,7 @@ sns.lineplot(
     data=byuserhour_df,
     x="hr",
     y="casual",
-    color="#C9DF8B",
+    color="C22100",
     label="Casual",
     linewidth=2,
     ax=ax
@@ -431,7 +431,7 @@ sns.lineplot(
     data=byuserhour_df,
     x="hr",
     y="registered",
-    color="#36802D",
+    color="8A1F08",
     label="Registered",
     linewidth=2,
     ax=ax
