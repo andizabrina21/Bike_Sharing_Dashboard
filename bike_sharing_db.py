@@ -441,27 +441,32 @@ sns.lineplot(
 ax.set_title("User Type Behaviour by Hour")
 ax.set_xlabel("Hour")
 ax.set_ylabel("Number of Users")
+def format_k(value):
+    if value >= 1000:
+        return f'{value/1000:.0f}K'
+    else:
+        return f'{value:.0f}'
 # Casual
-ax.annotate(f'{casual_max["casual"]:.0f}',
+ax.annotate(format_k(casual_max["casual"]),
             (casual_max["hr"], casual_max["casual"]),
             textcoords="offset points",
             xytext=(0,10),
             ha='center')
 
-ax.annotate(f'{casual_min["casual"]:.0f}',
+ax.annotate(format_k(casual_min["casual"]),
             (casual_min["hr"], casual_min["casual"]),
             textcoords="offset points",
             xytext=(0,-15),
             ha='center')
 
 # Registered
-ax.annotate(f'{registered_max["registered"]:.0f}',
+ax.annotate(format_k(registered_max["registered"]),
             (registered_max["hr"], registered_max["registered"]),
             textcoords="offset points",
             xytext=(0,10),
             ha='center')
 
-ax.annotate(f'{registered_min["registered"]:.0f}',
+ax.annotate(format_k(registered_min["registered"]),
             (registered_min["hr"], registered_min["registered"]),
             textcoords="offset points",
             xytext=(0,-15),
