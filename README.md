@@ -38,8 +38,24 @@ Untuk melihat hasil visualisasi data dalam bentuk dashboard, ada dua cara sebaga
 - Dashboard di Streamlit Cloud otomatis redeploy jika ada perubahan di Github.
 
 ## Dashboard Overview
-image
-### KPI
+![Dashboard](images/dashboard1.png)
+### Key Performance Indicator
+![KPI](images/dashboard2.png)
+#### Key Insights & Business Recommendation
+blabla
+
+### User Trends Over Time
+![UserTrend](images/dashboard3.png)
+#### Key Insights & Business Recommendation
+blabla
+
+### Environmental Impact
+![Env](images/dashboard4.png)
+#### Key Insights & Business Recommendation
+blabla
+
+### User Segmentation
+![Segment](images/dashboard5.png)
 #### Key Insights & Business Recommendation
 blabla
 
