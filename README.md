@@ -8,10 +8,10 @@ Project ini menganalisis data dari aplikasi Capital Bikeshare untuk mengevaluasi
 Seiring dengan meningkatnya penggunaan layanan Capital Bikeshare, perusahaan perlu memastikan ketersediaan sepeda, menjaga kualitas armada, serta mengoptimalkan operasional di setiap stasiun. Namun, permintaan penyewaan dapat berubah-ubah karena faktor seperti cuaca, musim, hari, dan waktu. Tanpa pemahaman yang baik terhadap pola penggunaan tersebut, perusahaan berisiko mengalami ketidakseimbangan distribusi sepeda, penurunan kualitas layanan, dan operasional yang kurang efisien. Oleh karena itu, analisis data diperlukan untuk memahami pola penggunaan, mengidentifikasi faktor yang memengaruhi permintaan, serta menghasilkan insight yang mendukung pengambilan keputusan dan peningkatan kualitas layanan. 
 
 ## Dataset Description
-Dataset utama yang digunakan berkaitan dengan catatan historis selama dua tahun, yaitu tahun 2011 dan 2012, dari sistem Capital Bikeshare di Washington D.C., Amerika Serikat, yang tersedia untuk umum di http://capitalbikeshare.com/system-data. Data tersebut kemudian diagregasi dalam basis per jam dan harian, lalu dilengkapi dengan informasi cuaca dan musiman yang sesuai. Informasi cuaca diperoleh dari http://www.freemeteo.com.
+Dataset yang digunakan diambil dari Kaggle, dataset ini berkaitan dengan catatan historis selama dua tahun, yaitu tahun 2011 dan 2012, dari sistem Capital Bikeshare di Washington D.C., Amerika Serikat, yang tersedia untuk umum di http://capitalbikeshare.com/system-data. Data tersebut kemudian diagregasi dalam basis per jam dan harian, lalu dilengkapi dengan informasi cuaca dan musiman yang sesuai. Informasi cuaca diperoleh dari http://www.freemeteo.com.
 
 ## Data Cleaning
-blabla
+Sebelum dilakukan analisis, data terlebih dahulu melalui proses **data cleaning** untuk memastikan kualitas dan keakuratan data. Tahapan ini meliputi pengecekan konsistensi antara dataset **hour** dan **day**, penanganan *missing values*, pengecekan data duplikat, serta validasi dan perbaikan data yang diperlukan agar siap digunakan dalam proses analisis.
 
 ## Dashboard
 Untuk melihat hasil visualisasi data dalam bentuk dashboard, ada dua cara sebagai berikut:
@@ -38,8 +38,10 @@ Untuk melihat hasil visualisasi data dalam bentuk dashboard, ada dua cara sebaga
 - Dashboard di Streamlit Cloud otomatis redeploy jika ada perubahan di Github.
 
 ## Dashboard Overview
-imsage
-## Key Insights & Business Recommendation
+image
+### KPI
+#### Key Insights & Business Recommendation
+blabla
 
 ## Conclusion
 Analisis dilakukan dengan menggunakan Python melalui Colab. Dari proses analisis, diperoleh kesimpulan sebagai berikut:
