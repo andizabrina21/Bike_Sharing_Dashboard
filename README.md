@@ -55,7 +55,7 @@ blabla
 blabla
 
 ### User Segmentation
-![Segment](images/dashboard5.png)
+![Segment](images/dahsboard5.png)
 #### Key Insights & Business Recommendation
 blabla
 
